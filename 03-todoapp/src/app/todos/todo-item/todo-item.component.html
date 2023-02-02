@@ -5,7 +5,8 @@
 
     <label (dblclick)="startEdit()">{{ todo.text }}</label>
 
-    <button class="destroy"></button>
+    <button class="destroy"
+    (click)="removeTodo()"></button>
   </div>
   <input
     class="edit"

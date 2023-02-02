@@ -30,7 +30,8 @@ const _todoReducer = createReducer(
           }
         : todo;
     });
-  })
+  }),
+  on(actions.remove, (state, { id }) => state.filter((todo) => todo.id !== id))
 );
 
 export function todoReducer(state: any, action: any) {
