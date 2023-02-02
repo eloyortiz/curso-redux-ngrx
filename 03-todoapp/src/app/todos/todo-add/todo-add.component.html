@@ -1,0 +1,10 @@
+<header class="header">
+  <h1>todos</h1>
+  <input
+    class="new-todo"
+    placeholder="Type new todo"
+    [formControl]="txtInput"
+    (keyup.enter)="addTodo()"
+    autofocus
+  />
+</header>

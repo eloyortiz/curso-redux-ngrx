@@ -1,0 +1,20 @@
+<footer class="footer">
+  <span class="todo-count" *ngIf="pendingTodos !== 1; else singular">
+    <strong>{{ pendingTodos }}</strong> pending tasks
+  </span>
+  <ng-template #singular>
+    <span class="todo-count">
+      <strong>{{ pendingTodos }}</strong> pending task
+    </span>
+  </ng-template>
+
+  <ul class="filters">
+    <li *ngFor="let filter of filters" (click)="setFilter(filter)">
+      <a href="#/" [class.selected]="filter === currentFilter">
+        {{ filter | titlecase }}
+      </a>
+    </li>
+  </ul>
+  <!-- Hidden if no completed items are left ↓ -->
+  <button class="clear-completed" >Clear completed</button>
+</footer>
