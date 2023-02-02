@@ -1,18 +1,20 @@
 <footer class="footer">
-  <!-- This should be `0 items left` by default -->
-  <span class="todo-count"><strong>0</strong> pending tasks</span>
-  <!-- Remove this if you don't implement routing -->
+  <span class="todo-count" *ngIf="pendingTodos !== 1; else singular">
+    <strong>{{ pendingTodos }}</strong> pending tasks
+  </span>
+  <ng-template #singular>
+    <span class="todo-count">
+      <strong>{{ pendingTodos }}</strong> pending task
+    </span>
+  </ng-template>
+
   <ul class="filters">
-    <li>
-      <a class="selected" href="#/">All</a>
-    </li>
-    <li>
-      <a href="#/active">Active</a>
-    </li>
-    <li>
-      <a href="#/completed">Completed</a>
+    <li *ngFor="let filter of filters" (click)="setFilter(filter)">
+      <a href="#/" [class.selected]="filter === currentFilter">
+        {{ filter | titlecase }}
+      </a>
     </li>
   </ul>
   <!-- Hidden if no completed items are left ↓ -->
-  <button class="clear-completed">Clear completed</button>
+  <button class="clear-completed" >Clear completed</button>
 </footer>
