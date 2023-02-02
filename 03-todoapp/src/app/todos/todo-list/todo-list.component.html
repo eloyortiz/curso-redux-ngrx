@@ -1,3 +1,6 @@
 <ul class="todo-list">
-  <app-todo-item></app-todo-item>
+  <app-todo-item
+    *ngFor="let todo of todos; let i = index; trackBy: trackByItems"
+    [todo]="todo"
+  ></app-todo-item>
 </ul>
