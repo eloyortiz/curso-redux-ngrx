@@ -21,12 +21,12 @@ const _todoReducer = createReducer(
         : todo;
     });
   }),
-  on(actions.edit, (state, { id }) => {
+  on(actions.edit, (state, { id, text }) => {
     return state.map((todo) => {
       return todo.id === id
         ? {
             ...todo,
-            completed: !todo.completed,
+            text,
           }
         : todo;
     });
