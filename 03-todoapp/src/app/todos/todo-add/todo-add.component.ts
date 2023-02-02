@@ -18,9 +18,9 @@ export class TodoAddComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  agregar() {
+  addTodo() {
     if (this.txtInput.invalid) return;
-    this.store.dispatch(actions.crear({ texto: this.txtInput.value }));
+    this.store.dispatch(actions.create({ text: this.txtInput.value }));
     this.txtInput.reset();
   }
 }

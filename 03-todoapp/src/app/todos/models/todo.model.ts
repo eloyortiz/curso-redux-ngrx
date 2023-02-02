@@ -1,11 +1,11 @@
 export class Todo {
   public id: number;
-  public texto: string;
-  public completado: boolean;
+  public text: string;
+  public completed: boolean;
 
-  constructor(texto: string) {
-    this.texto = texto;
+  constructor(text: string) {
+    this.text = text;
     this.id = Math.random();
-    this.completado = false;
+    this.completed = false;
   }
 }

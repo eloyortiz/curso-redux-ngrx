@@ -12,9 +12,9 @@ import * as actions from '../todo.actions';
 })
 export class TodoItemComponent implements OnInit {
   @Input() todo!: Todo;
-  @ViewChild('inputFisico') txtInputFisico!: ElementRef;
+  @ViewChild('inputControl') txtInputControl!: ElementRef;
 
-  chkCompletado!: FormControl;
+  chkCompleted!: FormControl;
   txtInput!: FormControl;
 
   isEditing: boolean = false;
@@ -22,21 +22,21 @@ export class TodoItemComponent implements OnInit {
   constructor(private store: Store<AppState>) {}
 
   ngOnInit(): void {
-    this.chkCompletado = new FormControl(this.todo.completado);
-    this.txtInput = new FormControl(this.todo.texto, Validators.required);
-    this.chkCompletado.valueChanges.subscribe(valor => {
-      this.store.dispatch(actions.toggle({id: this.todo.id}) )
-    })
+    this.chkCompleted = new FormControl(this.todo.completed);
+    this.txtInput = new FormControl(this.todo.text, Validators.required);
+    this.chkCompleted.valueChanges.subscribe((valor) => {
+      this.store.dispatch(actions.toggle({ id: this.todo.id }));
+    });
   }
 
-  editar() {
+  startEdit() {
     this.isEditing = true;
     setTimeout(() => {
-      this.txtInputFisico.nativeElement.select();
+      this.txtInputControl.nativeElement.select();
     }, 1);
   }
 
-  terminarEdicion() {
+  finishEditing() {
     this.isEditing = false;
   }
 }
