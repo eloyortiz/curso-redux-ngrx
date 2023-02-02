@@ -31,7 +31,15 @@ const _todoReducer = createReducer(
         : todo;
     });
   }),
-  on(actions.remove, (state, { id }) => state.filter((todo) => todo.id !== id))
+  on(actions.remove, (state, { id }) => state.filter((todo) => todo.id !== id)),
+  on(actions.toggleAll, (state, { completed }) =>
+    state.map((todo) => {
+      return {
+        ...todo,
+        completed,
+      };
+    })
+  )
 );
 
 export function todoReducer(state: any, action: any) {

@@ -10,10 +10,13 @@ export const toggle = createAction(
 );
 export const edit = createAction(
   '[TODO] Edit Todo',
-  props<{ id: number, text: string }>()
+  props<{ id: number; text: string }>()
 );
 export const remove = createAction(
   '[TODO] Remove Todo',
   props<{ id: number }>()
 );
-
+export const toggleAll = createAction(
+  '[TODO] ToggleAll Todos',
+  props<{ completed: boolean }>()
+);
