@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../app.reducer';
-import * as actions from '../../filter/filter.actions';
+import { setFilter, todoFilter } from '../../filter/filter.actions';
+import { clearCompleted } from '../todo.actions';
 
 @Component({
   selector: 'app-todo-footer',
@@ -9,24 +10,25 @@ import * as actions from '../../filter/filter.actions';
   styleUrls: ['./todo-footer.component.css'],
 })
 export class TodoFooterComponent implements OnInit {
-  filters: actions.todoFilter[] = ['all','completed','pending'];
-  currentFilter: actions.todoFilter = 'all';
+  filters: todoFilter[] = ['all', 'completed', 'pending'];
+  currentFilter: todoFilter = 'all';
 
   pendingTodos: number = 0;
 
   constructor(private store: Store<AppState>) {}
 
   ngOnInit(): void {
-    // this.store
-    //   .select('filter')
-    //   .subscribe((value) => (this.currentFilter = value));
-    this.store.subscribe(state => {
+    this.store.subscribe((state) => {
       this.currentFilter = state.filter;
-      this.pendingTodos = state.todos.filter(todo => !todo.completed).length;
-    })
+      this.pendingTodos = state.todos.filter((todo) => !todo.completed).length;
+    });
   }
 
-  setFilter(filter: actions.todoFilter) {
-    this.store.dispatch(actions.setFilter({filter}));
+  setFilter(filter: todoFilter) {
+    this.store.dispatch(setFilter({ filter }));
+  }
+
+  clearCompleted() {
+    this.store.dispatch(clearCompleted());
   }
 }
