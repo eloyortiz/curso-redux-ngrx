@@ -9,6 +9,7 @@
       {
         "button-name": "off"
       }
-    ]
+    ],
+    "axe/structure": "off"
   }
 }
