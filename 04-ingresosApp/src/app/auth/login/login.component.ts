@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 import { AuthService } from '../../services/auth.service';
 
 @Component({
@@ -26,13 +27,28 @@ export class LoginComponent implements OnInit {
 
 	login() {
 		if (this.loginForm.invalid) return;
+
+		Swal.fire({
+			title: 'Loading, please wait...',
+			didOpen: () => {
+				Swal.showLoading();
+			},
+		});
+
 		const { email, password } = this.loginForm.value;
 		this.authService
 			.loginUser(email, password)
 			.then((credentials) => {
+				Swal.close();
 				console.log(credentials);
 				this.router.navigate(['/']);
 			})
-			.catch(console.error);
+			.catch((err) => {
+				Swal.fire({
+					icon: 'error',
+					title: 'Oops...',
+					text: err.message.replace('Firebase: ', ''),
+				});
+			});
 	}
 }
