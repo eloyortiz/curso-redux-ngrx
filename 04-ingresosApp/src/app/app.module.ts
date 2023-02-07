@@ -15,9 +15,9 @@ import { appReducers } from './app.reducer';
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { DetalleComponent } from './ingreso/detalle/detalle.component';
-import { EstadisticaComponent } from './ingreso/estadistica/estadistica.component';
-import { IngresoComponent } from './ingreso/ingreso.component';
+import { DetalleComponent } from './ingreso-gasto/detalle/detalle.component';
+import { EstadisticaComponent } from './ingreso-gasto/estadistica/estadistica.component';
+import { IngresoGastoComponent } from './ingreso-gasto/ingreso-gasto.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
@@ -28,7 +28,7 @@ import { SidebarComponent } from './shared/sidebar/sidebar.component';
 		LoginComponent,
 		RegisterComponent,
 		DashboardComponent,
-		IngresoComponent,
+		IngresoGastoComponent,
 		EstadisticaComponent,
 		DetalleComponent,
 		FooterComponent,
