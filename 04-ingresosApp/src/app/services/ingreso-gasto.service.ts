@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { map } from 'rxjs';
 import { IngresoGasto } from '../models/ingreso-gasto.model';
 import { AuthService } from './auth.service';
 
@@ -11,6 +12,23 @@ export class IngresoGastoService {
 		private firestore: AngularFirestore,
 		private authService: AuthService
 	) {}
+
+	initIngresosGastosListener(uid: string) {
+		this.firestore
+			.collection(`${uid}/ingresos-gastos/items`)
+			.snapshotChanges()
+			.pipe(
+				map((snapshot) =>
+					snapshot.map((doc) => ({
+						uid: doc.payload.doc.id,
+						...(doc.payload.doc.data() as any),
+					}))
+				)
+			)
+			.subscribe((snap) => {
+				console.log('snap :>> ', snap);
+			});
+	}
 
 	crearIngresoGasto(ingresoGasto: IngresoGasto) {
 		const uid = this.authService.user?.uid;
