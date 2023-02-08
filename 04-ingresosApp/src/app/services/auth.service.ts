@@ -6,6 +6,8 @@ import { Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { AppState } from '../app.reducer';
 import * as authActions from '../auth/auth.actions';
+import * as ingresoActions from '../ingreso-gasto/ingreso-gasto.actions';
+
 import { User } from '../models/user.model';
 
 @Injectable({
@@ -40,6 +42,7 @@ export class AuthService {
 				this._user = null;
 				if (this.userSubscription$) this.userSubscription$.unsubscribe();
 				this.store.dispatch(authActions.unSetUser());
+				this.store.dispatch(ingresoActions.unSetItems());
 			}
 		});
 	}

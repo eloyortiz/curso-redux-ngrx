@@ -14,7 +14,7 @@ export class IngresoGastoService {
 	) {}
 
 	initIngresosGastosListener(uid: string) {
-		this.firestore
+		return this.firestore
 			.collection(`${uid}/ingresos-gastos/items`)
 			.snapshotChanges()
 			.pipe(
@@ -24,10 +24,7 @@ export class IngresoGastoService {
 						...(doc.payload.doc.data() as any),
 					}))
 				)
-			)
-			.subscribe((snap) => {
-				console.log('snap :>> ', snap);
-			});
+			);
 	}
 
 	crearIngresoGasto(ingresoGasto: IngresoGasto) {
