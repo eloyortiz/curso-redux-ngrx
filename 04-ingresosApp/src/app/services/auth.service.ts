@@ -13,6 +13,11 @@ import { User } from '../models/user.model';
 })
 export class AuthService {
 	userSubscription$!: Subscription;
+	private _user!: User | null;
+
+	get user() {
+		return this._user;
+	}
 
 	constructor(
 		public auth: AngularFireAuth,
@@ -28,9 +33,11 @@ export class AuthService {
 					.valueChanges()
 					.subscribe((firestoreUser: any) => {
 						const user = User.fromFirebase(firestoreUser);
+						this._user = user;
 						this.store.dispatch(authActions.setUser({ user }));
 					});
 			} else {
+				this._user = null;
 				if (this.userSubscription$) this.userSubscription$.unsubscribe();
 				this.store.dispatch(authActions.unSetUser());
 			}
