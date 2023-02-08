@@ -51,21 +51,21 @@
 					</div>
 
 					<hr />
-					<button
+					<button *ngIf="!isLoading"
 						type="submit"
 						class="btn btn-primary mr-2"
 						[disabled]="ingresoForm.invalid"
 					>
 						<i class="fa fa-save"></i>
+
 						Agregar
 					</button>
 
-					<!--
-                <button disabled class="btn btn-success mr-2">
-                  <i class="fa fa-spin fa-sync"></i>
-                  Espere por favor...
-                </button>
-              -->
+					<button *ngIf="isLoading"
+					 disabled class="btn btn-primary mr-2">
+						<i class="fa fa-spin fa-spinner"></i>
+						Espere por favor...
+					</button>
 
 					<button type="reset" class="btn btn-light">Cancelar</button>
 				</form>
