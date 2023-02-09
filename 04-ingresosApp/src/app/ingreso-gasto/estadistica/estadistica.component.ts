@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { ChartData, ChartType } from 'chart.js';
 import { AppState } from 'src/app/app.reducer';
 import { IngresoGasto } from 'src/app/models/ingreso-gasto.model';
 
@@ -14,6 +15,13 @@ export class EstadisticaComponent implements OnInit {
 
 	totalIngresos: number = 0;
 	totalGastos: number = 0;
+
+	// Doughnut
+	public ChartLabels: string[] = ['Ingresos', 'Gastos'];
+	public ChartData: ChartData = {
+		labels: this.ChartLabels,
+		datasets: [],
+	};
 
 	constructor(private store: Store<AppState>) {}
 
@@ -33,5 +41,9 @@ export class EstadisticaComponent implements OnInit {
 				this.contGastos++;
 			}
 		}
+
+		this.ChartData.datasets.push({
+			data: [this.totalIngresos, this.totalGastos],
+		});
 	}
 }

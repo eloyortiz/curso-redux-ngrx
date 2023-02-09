@@ -22,6 +22,7 @@ import { FooterComponent } from './shared/footer/footer.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
 import { OrdenIngresoPipe } from './pipes/orden-ingreso.pipe';
+import { NgChartsModule } from 'ng2-charts';
 
 @NgModule({
 	declarations: [
@@ -40,6 +41,7 @@ import { OrdenIngresoPipe } from './pipes/orden-ingreso.pipe';
 	imports: [
 		AppRoutingModule,
 		BrowserModule,
+		NgChartsModule,
 		ReactiveFormsModule,
 		AngularFireModule.initializeApp(environment.firebase),
 		AngularFirestoreModule,

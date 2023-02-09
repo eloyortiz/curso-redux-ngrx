@@ -80,7 +80,13 @@
 			<div class="card-body">
 				<h1 class="card-title">Gráfica</h1>
 
-				<!-- grÃ¡fica ira aquÃ­ -->
+				<canvas
+					baseChart
+					class="chart"
+					[data]="ChartData"
+					type="pie"
+				>
+				</canvas>
 			</div>
 		</div>
 	</div>
