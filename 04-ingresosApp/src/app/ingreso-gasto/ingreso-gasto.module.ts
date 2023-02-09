@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgChartsModule } from 'ng2-charts';
 import { AppRoutingModule } from '../app-routing.module';
+import { DashboardRoutesModule } from '../dashboard/dashboard-routes.module';
 import { DashboardComponent } from '../dashboard/dashboard.component';
 import { OrdenIngresoPipe } from '../pipes/orden-ingreso.pipe';
 import { SharedModule } from '../shared/shared.module';
@@ -18,6 +19,12 @@ import { IngresoGastoComponent } from './ingreso-gasto.component';
 		DetalleComponent,
 		OrdenIngresoPipe,
 	],
-	imports: [CommonModule, ReactiveFormsModule, NgChartsModule, SharedModule, AppRoutingModule],
+	imports: [
+		CommonModule,
+		ReactiveFormsModule,
+		NgChartsModule,
+		SharedModule,
+		DashboardRoutesModule,
+	],
 })
 export class IngresoGastoModule {}

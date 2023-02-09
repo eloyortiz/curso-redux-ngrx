@@ -11,9 +11,10 @@ export const routes: Routes = [
 	{ path: 'register', component: RegisterComponent },
 	{
 		path: '',
-		component: DashboardComponent,
-		children: dashboardRoutes,
-		canActivate: [AuthGuard]
+		loadChildren: () =>
+			import('./ingreso-gasto/ingreso-gasto.module').then(
+				(m) => m.IngresoGastoModule
+			),
 	},
 	{ path: '**', redirectTo: '' },
 ];
