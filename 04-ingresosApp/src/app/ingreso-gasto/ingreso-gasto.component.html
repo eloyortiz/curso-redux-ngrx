@@ -1,0 +1,75 @@
+<div class="row">
+	<div class="col-12">
+		<div class="card">
+			<div class="card-body">
+				<h4 class="card-title">Agregar Ingreso / Gasto</h4>
+				<p class="card-description">Especifique la cantidad y el tipo</p>
+
+				<form [formGroup]="ingresoForm" (ngSubmit)="save()">
+					<div class="form-group">
+						<label>Descripción</label>
+						<input
+							type="text"
+							class="form-control"
+							placeholder="Descripción"
+							name="descripcion"
+							formControlName="description"
+						/>
+					</div>
+
+					<div class="form-group">
+						<label>Cantidad</label>
+						<input
+							type="number"
+							class="form-control"
+							placeholder="Cantidad"
+							name="cantidad"
+							formControlName="amount"
+						/>
+						<p>Debe de ser una cantidad positivo</p>
+					</div>
+
+					<div class="form-group">
+						<label>Tipo</label>
+						<br />
+						<button
+							*ngIf="type === 'ingreso'"
+							(click)="type = 'gasto'"
+							type="button"
+							class="btn btn-success btn-block"
+						>
+							Ingreso
+						</button>
+						<button
+							*ngIf="type === 'gasto'"
+							(click)="type = 'ingreso'"
+							type="button"
+							class="btn btn-danger btn-block"
+						>
+							Gasto
+						</button>
+					</div>
+
+					<hr />
+					<button *ngIf="!isLoading"
+						type="submit"
+						class="btn btn-primary mr-2"
+						[disabled]="ingresoForm.invalid"
+					>
+						<i class="fa fa-save"></i>
+
+						Agregar
+					</button>
+
+					<button *ngIf="isLoading"
+					 disabled class="btn btn-primary mr-2">
+						<i class="fa fa-spin fa-spinner"></i>
+						Espere por favor...
+					</button>
+
+					<button type="reset" class="btn btn-light">Cancelar</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
