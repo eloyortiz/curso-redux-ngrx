@@ -19,9 +19,7 @@ import { DetalleComponent } from './ingreso-gasto/detalle/detalle.component';
 import { EstadisticaComponent } from './ingreso-gasto/estadistica/estadistica.component';
 import { IngresoGastoComponent } from './ingreso-gasto/ingreso-gasto.component';
 import { OrdenIngresoPipe } from './pipes/orden-ingreso.pipe';
-import { FooterComponent } from './shared/footer/footer.component';
-import { NavbarComponent } from './shared/navbar/navbar.component';
-import { SidebarComponent } from './shared/sidebar/sidebar.component';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
 	declarations: [
@@ -30,14 +28,13 @@ import { SidebarComponent } from './shared/sidebar/sidebar.component';
 		IngresoGastoComponent,
 		EstadisticaComponent,
 		DetalleComponent,
-		FooterComponent,
-		NavbarComponent,
-		SidebarComponent,
+
 		OrdenIngresoPipe,
 	],
 	imports: [
 		AppRoutingModule,
 		AuthModule,
+		SharedModule,
 		BrowserModule,
 		NgChartsModule,
 		ReactiveFormsModule,
