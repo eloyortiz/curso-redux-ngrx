@@ -38,6 +38,6 @@ export class IngresoGastoService {
 	borrarIngresoGasto(uidItem: string) {
 		const uidUser = this.authService.user?.uid;
 		return this.firestore
-			.doc(`${uidUser}/ingresos-gastos/items1/${uidItem}1`).delete();
+			.doc(`${uidUser}/ingresos-gastos/items/${uidItem}`).delete();
 	}
 }
