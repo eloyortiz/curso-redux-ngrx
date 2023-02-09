@@ -23,7 +23,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
 	ngOnInit(): void {
 		this.userSubs$ = this.store
 			.select('user')
-			.pipe(filter((auth) => auth.user != null))
+			.pipe(filter((auth) => auth.user !== null))
 			.subscribe(({ user }) => {
 				this.ingresosGastosSubs$ = this.ingresoGastoService.initIngresosGastosListener(user?.uid).subscribe(ingresosGastosFb => {
 					this.store.dispatch(setItems({ items: ingresosGastosFb }))

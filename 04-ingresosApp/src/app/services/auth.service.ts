@@ -65,6 +65,6 @@ export class AuthService {
 	}
 
 	isAuth() {
-		return this.auth.authState.pipe(map((fuser) => fuser != null));
+		return this.auth.authState.pipe(map((fuser) => fuser !== null));
 	}
 }
