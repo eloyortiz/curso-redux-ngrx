@@ -19,7 +19,6 @@ import { IngresoGastoModule } from './ingreso-gasto/ingreso-gasto.module';
 	imports: [
 		AppRoutingModule,
 		AuthModule,
-		IngresoGastoModule,
 		BrowserModule,
 		AngularFireModule.initializeApp(environment.firebase),
 		AngularFirestoreModule,
