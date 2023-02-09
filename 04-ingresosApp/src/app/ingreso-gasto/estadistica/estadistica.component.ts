@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { ChartData, ChartType } from 'chart.js';
-import { AppState } from 'src/app/app.reducer';
+import { ChartData } from 'chart.js';
 import { IngresoGasto } from 'src/app/models/ingreso-gasto.model';
+import { AppStateWithIngreso } from '../ingreso-gasto.reducer';
 
 @Component({
 	selector: 'app-estadistica',
@@ -23,7 +23,7 @@ export class EstadisticaComponent implements OnInit {
 		datasets: [],
 	};
 
-	constructor(private store: Store<AppState>) {}
+	constructor(private store: Store<AppStateWithIngreso>) {}
 
 	ngOnInit(): void {
 		this.store
