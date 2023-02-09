@@ -4,19 +4,19 @@
 			<div class="card-body">
 				<h4 class="card-title">Detalle de ingresos/gastos</h4>
 
-				<table class="table">
+				<table class="table table-hover">
 					<thead>
 						<tr>
-							<th>Descripción</th>
-							<th>Cantidad</th>
-							<th>Tipo</th>
-							<th></th>
+							<th scope="col">Descripción</th>
+							<th scope="col">Cantidad</th>
+							<th scope="col">Tipo</th>
+							<th scope="col"></th>
 						</tr>
 					</thead>
 
 					<tbody>
-						<tr *ngFor="let item of ingresosGastos">
-							<td>{{ item.description }}</td>
+						<tr *ngFor="let item of ingresosGastos | ordenIngreso">
+							<td>{{ item.description | titlecase}}</td>
 							<td>{{ item.amount }}</td>
 							<td
 								[class.text-success]="item.type === 'ingreso'"
@@ -27,7 +27,7 @@
 							<td>
 								<button
 									type="button"
-									class="btn btn-danger"
+									class="btn btn-outline-danger"
 									(click)="delete(item.uid)"
 								>
 									<i class="fa fa-trash"></i>
