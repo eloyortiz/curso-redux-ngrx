@@ -1,8 +1,10 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Subscription, tap } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { AppState } from 'src/app/app.reducer';
 import { IngresoGasto } from 'src/app/models/ingreso-gasto.model';
+import { IngresoGastoService } from 'src/app/services/ingreso-gasto.service';
+import Swal from 'sweetalert2';
 
 @Component({
 	selector: 'app-detalle',
@@ -13,7 +15,10 @@ export class DetalleComponent implements OnInit, OnDestroy {
 	ingresosSubs$!: Subscription;
 	ingresosGastos: IngresoGasto[] | any[] = [];
 
-	constructor(private store: Store<AppState>) {}
+	constructor(
+		private store: Store<AppState>,
+		private ingresoGastoService: IngresoGastoService
+	) {}
 
 	ngOnInit(): void {
 		this.ingresosSubs$ = this.store
@@ -26,6 +31,11 @@ export class DetalleComponent implements OnInit, OnDestroy {
 	}
 
 	delete(uid: string) {
-		console.log(uid);
+		this.ingresoGastoService
+			.borrarIngresoGasto(uid)
+			.then(() => {
+				Swal.fire('Éxito!', 'Registro eliminado', 'success');
+			})
+			.catch((err) => Swal.fire('Error', err.message, 'error'));
 	}
 }
