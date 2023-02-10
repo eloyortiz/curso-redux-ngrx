@@ -12,7 +12,7 @@ export class UsuarioService {
 
   getUsers() {
     return this.http
-      .get<any>(`${this._url}/users`)
+      .get<any>(`${this._url}/users?delay=3`)
       .pipe(map((resp) => resp['data']));
   }
 }
