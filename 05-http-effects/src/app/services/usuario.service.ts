@@ -18,7 +18,7 @@ export class UsuarioService {
 
   getUserById(id: string) {
     return this.http
-      .get<any>(`${this._url}/users/${id}?delay=3`)
+      .get<any>(`${this._url}/users/${id}?delay=1`)
       .pipe(map((resp) => resp['data']));
   }
 }
