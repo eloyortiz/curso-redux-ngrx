@@ -1,0 +1,24 @@
+<div *ngIf="isLoading" class="alert alert-info text-center" role="alert">
+  <h4 class="alert-heading">Cargando...</h4>
+  <p><i class="fa fa-spin fa-2x fa-spinner"></i></p>
+<p class="mb-0"></p>
+</div>
+
+<div *ngIf="error" class="alert alert-danger" role="alert">
+  <h4 class="alert-heading text-center">Error</h4>
+  <pre>{{error | json}}</pre>
+<p class="mb-0"></p>
+</div>
+
+<div class="card-columns" *ngIf="!isLoading">
+  <div class="card" *ngFor="let user of usuarios">
+    <img [src]="user.avatar" class="card-img-top" alt="{{user.first_name}} {{ user.last_name }}" />
+    <div class="card-body">
+      <h5 class="card-title">{{ user.first_name }} {{ user.last_name }}</h5>
+      <p class="card-text">This is a longer card with supporting.</p>
+      <p class="card-text">
+        <span class="text-muted">ID: {{ user.id }}</span>
+      </p>
+    </div>
+  </div>
+</div>
