@@ -1,3 +1,10 @@
+
+<div class="row" *ngIf="!isLoading">
+<p class="backHome cursor" (click)="goHome()">
+  <i class="fa fa-arrow-left"></i> Back
+</p>
+</div>
+
 <div *ngIf="isLoading" class="alert alert-info text-center" role="alert">
   <h4 class="alert-heading">Cargando...</h4>
   <p><i class="fa fa-spin fa-2x fa-spinner"></i></p>

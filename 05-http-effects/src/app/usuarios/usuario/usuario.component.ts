@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Usuario } from 'src/app/models/usuario.model';
 import { cargarUsuario } from 'src/app/store/actions';
@@ -15,7 +15,7 @@ export class UsuarioComponent implements OnInit {
   isLoading: boolean = false;
   error!: any;
 
-  constructor(private router: ActivatedRoute, private store: Store<AppState>) {}
+  constructor(private router: Router, private activatedRouter: ActivatedRoute, private store: Store<AppState>) {}
 
   ngOnInit(): void {
     this.store.select('usuario').subscribe(({ user, loading, error }) => {
@@ -24,9 +24,12 @@ export class UsuarioComponent implements OnInit {
       this.error = error;
     });
 
-    this.router.params.subscribe(({ id }) => {
+    this.activatedRouter.params.subscribe(({ id }) => {
       console.log('id :>> ', id);
       this.store.dispatch(cargarUsuario({ id }));
     });
+  }
+  goHome() {
+    this.router.navigate(['/home']);
   }
 }

@@ -12,13 +12,13 @@ export class UsuarioService {
 
   getUsers() {
     return this.http
-      .get<any>(`${this._url}/users?delay=3`)
+      .get<any>(`${this._url}/users`)
       .pipe(map((resp) => resp['data']));
   }
 
   getUserById(id: string) {
     return this.http
-      .get<any>(`${this._url}/users/${id}?delay=1`)
+      .get<any>(`${this._url}/users/${id}`) //?delay=1
       .pipe(map((resp) => resp['data']));
   }
 }

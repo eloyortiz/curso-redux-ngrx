@@ -1,1 +1,8 @@
-/* You can add global styles to this file, and also import other style files */
+.cursor{
+	cursor: pointer;
+}
+.backHome
+{
+  color: #808080;
+  font-size: 0.8rem;
+}
