@@ -11,19 +11,24 @@
 			"prefix": "app",
 			"architect": {
 				"build": {
-					"builder": "@angular-devkit/build-angular:browser",
+					"builder": "@angular-devkit/build-angular:application",
 					"options": {
 						"outputPath": "dist/ingresos-app",
 						"index": "src/index.html",
-						"main": "src/main.ts",
-						"polyfills": "src/polyfills.ts",
+						"polyfills": [
+							"zone.js"
+						],
 						"tsConfig": "tsconfig.app.json",
-						"assets": ["src/favicon.ico", "src/assets"],
+						"assets": [
+							"src/favicon.ico",
+							"src/assets"
+						],
 						"styles": [
 							"src/styles.css",
 							"node_modules/bootstrap/dist/css/bootstrap.min.css"
 						],
-						"scripts": []
+						"scripts": [],
+						"browser": "src/main.ts"
 					},
 					"configurations": {
 						"production": {
@@ -48,12 +53,9 @@
 							"outputHashing": "all"
 						},
 						"development": {
-							"buildOptimizer": false,
 							"optimization": false,
-							"vendorChunk": true,
 							"extractLicenses": false,
-							"sourceMap": true,
-							"namedChunks": true
+							"sourceMap": true
 						}
 					},
 					"defaultConfiguration": "production"
@@ -62,10 +64,10 @@
 					"builder": "@angular-devkit/build-angular:dev-server",
 					"configurations": {
 						"production": {
-							"browserTarget": "ingresosApp:build:production"
+							"buildTarget": "ingresosApp:build:production"
 						},
 						"development": {
-							"browserTarget": "ingresosApp:build:development"
+							"buildTarget": "ingresosApp:build:development"
 						}
 					},
 					"defaultConfiguration": "development"
@@ -73,18 +75,25 @@
 				"extract-i18n": {
 					"builder": "@angular-devkit/build-angular:extract-i18n",
 					"options": {
-						"browserTarget": "ingresosApp:build"
+						"buildTarget": "ingresosApp:build"
 					}
 				},
 				"test": {
 					"builder": "@angular-devkit/build-angular:karma",
 					"options": {
 						"main": "src/test.ts",
-						"polyfills": "src/polyfills.ts",
+						"polyfills": [
+							"zone.js"
+						],
 						"tsConfig": "tsconfig.spec.json",
 						"karmaConfig": "karma.conf.js",
-						"assets": ["src/favicon.ico", "src/assets"],
-						"styles": ["src/styles.css"],
+						"assets": [
+							"src/favicon.ico",
+							"src/assets"
+						],
+						"styles": [
+							"src/styles.css"
+						],
 						"scripts": []
 					}
 				}
