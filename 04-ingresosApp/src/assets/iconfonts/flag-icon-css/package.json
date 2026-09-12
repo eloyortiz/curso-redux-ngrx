@@ -52,7 +52,7 @@
     "grunt-contrib-cssmin": "2.2.1",
     "grunt-contrib-less": "1.4.1",
     "grunt-contrib-watch": "1.0.0",
-    "svgo": "1.0.3"
+    "svgo": "2.8.4"
   },
   "directories": {},
   "dist": {
